@@ -1,3 +1,9 @@
 export default function Nav(){
-   return <h1>Nav</h1>
+   return (
+      <ul>
+         <li>Category</li>
+         <li>Name</li>
+         <li>Country</li>
+      </ul>
+   )
 }
