@@ -26,6 +26,7 @@ export default function Home() {
       <div>
          <h1>Find My Recipe</h1>
          <Nav />
+         <br />
          <Search />
       </div>
       {display && display.meals && (
