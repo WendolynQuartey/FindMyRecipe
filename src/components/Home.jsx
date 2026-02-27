@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react";
 import Nav from "./Nav.jsx";
 import Search from "./Search.jsx";
+import MealCard from "./MealCard.jsx";
 import axios from "axios";
 
 export default function Home() {
@@ -28,12 +29,8 @@ export default function Home() {
          <Search />
       </div>
       {display && display.meals && (
-         <div>
-           <a href=""> <img src={display.meals[0].strMealThumb} alt={display.meals[0].strMeal} /></a>
-            <h3>{display.meals[0].strMeal}</h3>
-         </div>
+         <MealCard  display={display}/>
       )}
-         <main>{getRandMeal}</main>
       </>
    )
 }
