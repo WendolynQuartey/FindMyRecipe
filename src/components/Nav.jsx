@@ -50,13 +50,13 @@ export default function Nav() {
                <div id="cat">
                   {cat.map((cat, index) => (
                      <div  className="dropdown-content" key={index}>
-                        <a href="#">{cat.strCategory}</a>
+                        <a href={`www.themealdb.com/api/json/v1/1/filter.php?c=${cat.strCategory}`}>{cat.strCategory}</a>
                      </div>
                   ))}
                </div>
             )}
          </div>
-         <div>
+         <div className="dropdown">
             <button className="dropbtn" onMouseOver={() => setDropdown(dropdown === 'letter' ? null : 'letter')}>Letter</button>
             {dropdown === 'letter' && (
                <div className="dropdown-content" id="letter">
@@ -68,7 +68,7 @@ export default function Nav() {
                </div>
             )}
          </div>
-         <div>
+         <div className="dropdown">
             <button className="dropbtn" onMouseOver={() => setDropdown(dropdown === 'area' ? null : 'area')}>Country</button>
             {dropdown === 'area' && (
                <div className="dropdown-content" id="area">
