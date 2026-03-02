@@ -1,7 +1,8 @@
 import axios from "axios";
+import MealCard from "./MealCard.jsx"
 import { useState, useEffect } from "react";
 
-export default function Nav() {
+export default function Nav({display, setDisplay}) {
    const [cat, setCat] = useState([]);
    const [area, setArea] = useState([]);
    const [letter, setLetter] = useState([]);
@@ -36,11 +37,23 @@ export default function Nav() {
       }
    }
 
+   async function handleDisplay(url, e) {
+      if (e) e.preventDefault();
+      try {
+         const res = await axios.get(url);
+         setDisplay(res.data);
+      } catch (error) {
+         console.error(error.message);
+      }
+   }
+
    useEffect(() => {
       getDropDown('cat');
       getDropDown('area');
       getDropDown('letter');
+      // handleDisplay('https://www.themealdb.com/api/json/v1/1/search.php?s=');
    }, [])
+
 
    return (
       <>
@@ -50,7 +63,10 @@ export default function Nav() {
                <div id="cat">
                   {cat.map((cat, index) => (
                      <div  className="dropdown-content" key={index}>
-                        <a href={`www.themealdb.com/api/json/v1/1/filter.php?c=${cat.strCategory}`}>{cat.strCategory}</a>
+                        <a 
+                           href="#"
+                           onClick={(e) => handleDisplay(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${cat.strCategory}
+`, e)}>{cat.strCategory}</a>
                      </div>
                   ))}
                </div>
@@ -62,7 +78,8 @@ export default function Nav() {
                <div className="dropdown-content" id="letter">
                   {letter.map((letter, index) => (
                      <div key={index}>
-                        <a href="#">{letter}</a>
+                        <a href="#" onClick={(e) => handleDisplay(`https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}
+`, e)}>{letter}</a>
                      </div>
                   ))}
                </div>
@@ -74,7 +91,9 @@ export default function Nav() {
                <div className="dropdown-content" id="area">
                   {area.map((area, index) => (
                      <div className="dropdown-content" key={index}>
-                        <a href="#">{area.strArea}</a>
+                        <a 
+                           href="#" 
+                           onClick={(e) => handleDisplay(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area.strArea}`, e)}>{area.strArea}</a>
                      </div>
                   ))}
                </div>
