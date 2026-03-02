@@ -44,37 +44,42 @@ export default function Nav() {
 
    return (
       <>
-         <button onMouseOver={() => setDropdown(dropdown === 'cat' ? null : 'cat')}>Category</button>
-         {dropdown === 'cat' && (
-            <div id="cat">
-               {cat.map((cat, index) => (
-                  <div key={index}>
-                     <a href="#">{cat.strCategory}</a>
-                  </div>
-               ))}
-            </div>
-         )}
-
-         <button onMouseOver={() => setDropdown(dropdown === 'letter' ? null : 'letter')}>Letter</button>
-         {dropdown === 'letter' && (
-            <div id="letter">
-               {letter.map((letter, index) => (
-                  <div key={index}>
-                     <a href="#">{letter}</a>
-                  </div>
-               ))}
-            </div>
-         )}
-         <button onMouseOver={() => setDropdown(dropdown === 'area' ? null : 'area')}>Country</button>
-         {dropdown === 'area' && (
-            <div id="area">
-               {area.map((area, index) => (
-                  <div key={index}>
-                     <a href="#">{area.strArea}</a>
-                  </div>
-               ))}
-            </div>
-         )}
+         <div className="dropdown">
+            <button className="dropbtn" onMouseOver={() => setDropdown(dropdown === 'cat' ? null : 'cat')}>Category</button>
+            {dropdown === 'cat' && (
+               <div id="cat">
+                  {cat.map((cat, index) => (
+                     <div  className="dropdown-content" key={index}>
+                        <a href="#">{cat.strCategory}</a>
+                     </div>
+                  ))}
+               </div>
+            )}
+         </div>
+         <div>
+            <button className="dropbtn" onMouseOver={() => setDropdown(dropdown === 'letter' ? null : 'letter')}>Letter</button>
+            {dropdown === 'letter' && (
+               <div className="dropdown-content" id="letter">
+                  {letter.map((letter, index) => (
+                     <div key={index}>
+                        <a href="#">{letter}</a>
+                     </div>
+                  ))}
+               </div>
+            )}
+         </div>
+         <div>
+            <button className="dropbtn" onMouseOver={() => setDropdown(dropdown === 'area' ? null : 'area')}>Country</button>
+            {dropdown === 'area' && (
+               <div className="dropdown-content" id="area">
+                  {area.map((area, index) => (
+                     <div className="dropdown-content" key={index}>
+                        <a href="#">{area.strArea}</a>
+                     </div>
+                  ))}
+               </div>
+            )}
+         </div>
       </>
    )
 }
